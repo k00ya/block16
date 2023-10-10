@@ -11,35 +11,43 @@ const items = [
 
 const cart = [];
 
+// Logs the name of each item in the 'items' array to the console. //
 function logItemNames() {
   items.forEach((item) => console.log(item.name));
 }
 
+// Finds and returns an item from the 'items' array based on its ID. //
 function findItemById(id) {
   return items.find((item) => item.id === id);
 }
 
+// Returns a new array where the names of the items are capitalized. //
 function capitalizeNames() {
   return items.map((item) => ({ ...item, name: item.name.toUpperCase() }));
 }
 
+// Calculates and returns the total inventory across all items. //
 function calculateTotalInventory() {
   return items.reduce((acc, item) => acc + item.inventory, 0);
 }
 
+// Calculates and returns the total price of all items in inventory. //
 function calculateAllInventoryPrice() {
   return items.reduce((acc, item) => acc + item.price * item.inventory, 0);
 }
 
+// Finds an item by its name and returns its price. //
 function getItemPriceByName(name) {
   const foundItem = items.find((item) => item.name === name);
   return foundItem ? foundItem.price : "Item not found";
 }
 
+// Filters and returns items that belong to a specific category. //
 function filterItemsByCategoryId(categoryId) {
   return items.filter((item) => item.categoryId === categoryId);
 }
 
+// Logs the names of items that are in the cart. //
 function logCartItems() {
   cart.forEach((id) => {
     const item = findItemById(Number(id));
@@ -47,6 +55,7 @@ function logCartItems() {
   });
 }
 
+// Calculates and returns the total price of items in the cart. // 
 function calculateTotalCartPrice() {
   return cart.reduce((acc, id) => {
     const item = findItemById(Number(id));
